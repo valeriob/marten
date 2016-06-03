@@ -211,9 +211,3 @@ paket.exe
 
 # Keeps ELMAH error logs out of the sample app
 App_Data/
-
-# project.json.lock with old project sytem.
-Marten.Testing.OtherAssembly.project.lock.json
-Marten.Testing.project.lock.json
-Marten.project.lock.json
-DinnerParty.project.lock.json
