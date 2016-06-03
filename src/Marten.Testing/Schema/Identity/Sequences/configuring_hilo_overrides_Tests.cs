@@ -1,5 +1,6 @@
-﻿using Marten.Schema;
-using Marten.Schema.Sequences;
+﻿using Baseline;
+using Marten.Schema;
+using Marten.Schema.Identity.Sequences;
 using Shouldly;
 using Xunit;
 
@@ -15,7 +16,7 @@ namespace Marten.Testing.Schema.Sequences
             var store = DocumentStore.For("something");
             var mapping = store.Schema.MappingFor(typeof (IntDoc));
 
-            var idStrategy = mapping.IdStrategy.ShouldBeOfType<HiloIdGeneration>();
+            var idStrategy = mapping.As<DocumentMapping>().IdStrategy.ShouldBeOfType<HiloIdGeneration>();
 
             idStrategy.Increment.ShouldBe(defaults.Increment);
             idStrategy.MaxLo.ShouldBe(defaults.MaxLo);
@@ -35,7 +36,7 @@ namespace Marten.Testing.Schema.Sequences
 
             var mapping = store.Schema.MappingFor(typeof(IntDoc));
 
-            var idStrategy = mapping.IdStrategy.ShouldBeOfType<HiloIdGeneration>();
+            var idStrategy = mapping.As<DocumentMapping>().IdStrategy.ShouldBeOfType<HiloIdGeneration>();
 
             idStrategy.Increment.ShouldBe(2);
             idStrategy.MaxLo.ShouldBe(55);
@@ -57,7 +58,7 @@ namespace Marten.Testing.Schema.Sequences
 
             var mapping = store.Schema.MappingFor(typeof(IntDoc));
 
-            var idStrategy = mapping.IdStrategy.ShouldBeOfType<HiloIdGeneration>();
+            var idStrategy = mapping.As<DocumentMapping>().IdStrategy.ShouldBeOfType<HiloIdGeneration>();
 
             idStrategy.Increment.ShouldBe(6);
             idStrategy.MaxLo.ShouldBe(66);
@@ -75,7 +76,7 @@ namespace Marten.Testing.Schema.Sequences
 
             var mapping = store.Schema.MappingFor(typeof(OverriddenHiloDoc));
 
-            var idStrategy = mapping.IdStrategy.ShouldBeOfType<HiloIdGeneration>();
+            var idStrategy = mapping.As<DocumentMapping>().IdStrategy.ShouldBeOfType<HiloIdGeneration>();
 
             idStrategy.Increment.ShouldBe(3);
             idStrategy.MaxLo.ShouldBe(33);

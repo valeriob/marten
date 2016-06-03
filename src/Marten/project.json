@@ -1,0 +1,34 @@
+﻿{
+  "version": "0.9.7-beta-*",
+  "description": "Postgresql as a Document Db and Event Store for .Net Development",
+  "authors": [ "Jeremy D. Miller", "Tim Cools", "Jeff Doolittle" ],
+  "packOptions": {
+    "projectUrl": "http://jasperfx.github.io/marten",
+    "licenseUrl": "https://github.com/JasperFX/marten/blob/master/LICENSE.txt"
+  },
+  "buildOptions": {
+    "compile": [ "**/*.cs", "../CommonAssemblyInfo.cs" ],
+    "embed": {
+      "mappings": {
+        "Marten.Schema.SchemaObjects.sql": "Schema/SchemaObjects.sql",
+        "Marten.Schema.SQL.mt_hilo.sql": "Schema/SQL/mt_hilo.sql",
+        "Marten.Schema.SQL.mt_stream.sql": "Schema/SQL/mt_stream.sql",
+        "Marten.Schema.SQL.mt_patching.js": "../../javascript/mt_patching.js",
+        "Marten.Schema.SQL.mt_transforms.js": "../../javascript/mt_transforms.js"
+      }
+    } 
+  },
+  "dependencies": {
+    "Npgsql": "3.0.4",
+    "Newtonsoft.Json": "8.0.3",
+    "Remotion.Linq": "2.0.2",
+    "Baseline": "0.5.1-alpha-29"
+  },
+  "frameworks": {
+    "net46": {
+      "frameworkAssemblies": {
+        "System.Data": ""
+      }
+    }
+  }
+}
